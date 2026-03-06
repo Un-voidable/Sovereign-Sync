@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOVEREIGN SYNC // COMMAND POST</title>
+    <style>
+        body {
+            background-color: #1a1a1a; /* Industrial Concrete Base */
+            color: #d1d1d1;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #333;
+            padding: 40px;
+            background: #222;
+        }
+        h1 { color: #00f2ff; text-align: center; } /* 00:43 Neon Sigil Color */
+        input, textarea {
+            width: 100%;
+            background: #111;
+            border: 1px solid #444;
+            color: #00f2ff;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .error-pulse { border-color: #ff0044 !important; }
+        button {
+            background: #00f2ff;
+            color: #000;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>UN_VOIDABLE // INTAKE</h1>
+    <form id="auditForm">
+        <label>DESIGNATION:</label>
+        <input type="text" id="name" required>
+        
+        <label>INTEGRITY BREACH (THE AUDIT):</label>
+        <textarea id="audit" rows="4" required></textarea>
+        
+        <button type="submit" id="submitBtn">INITIATE VETTING</button>
+    </form>
+</div>
+
+<script>
+    const blacklist = ['marketing', 'management', 'corporate', 'sales', 'growth'];
+    
+    document.getElementById('auditForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const input = document.getElementById('audit').value.toLowerCase();
+        
+        // The Eater Logic
+        const containsStatic = blacklist.some(term => input.includes(term));
+        
+        if (containsStatic) {
+            document.getElementById('audit').classList.add('error-pulse');
+            alert('[INPUT ERROR: STATIC DETECTED]');
+            document.getElementById('audit').value = '';
+        } else {
+            alert('SIGNAL VERIFIED. HANDSHAKE INITIATED.');
+        }
+    });
+</script>
+</body>
+</html>
